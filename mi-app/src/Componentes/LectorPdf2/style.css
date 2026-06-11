@@ -1,0 +1,85 @@
+.visor-container {
+    font-family: 'Inter', system-ui, sans-serif;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 2rem;
+}
+
+.control-panel {
+    background: #ffffff;
+    padding: 1rem;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 1rem;
+    text-align: left;
+}
+
+
+.herramientas-disenio {
+    background: #ffffff;
+    border: 1px solid #e2e8f0;
+    padding: 1rem;
+    border-radius: 8px;
+    display: flex;
+    gap: 2rem;
+    margin-bottom: 1.5rem;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+}
+
+.grupo-control {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.grupo-control label {
+    font-size: 14px;
+    font-weight: 600;
+    color: #64748b;
+    margin-right: 4px;
+}
+
+.grupo-control button {
+    padding: 6px 12px;
+    border: 1px solid #cbd5e1;
+    background: #ffffff;
+    border-radius: 6px;
+    cursor: pointer;
+    font-size: 13px;
+    font-weight: 500;
+    transition: background 0.2s;
+}
+
+.grupo-control button:hover {
+    background: #f1f5f9;
+}
+
+
+.btn-tema.claro {
+    border-left: 5px solid #ffffff;
+}
+
+.btn-tema.sepia {
+    border-left: 5px solid #f4f1ea;
+}
+
+.btn-tema.oscuro {
+    border-left: 5px solid #1e293b;
+}
+
+
+.hoja-render {
+    padding: 3rem;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    text-align: left;
+    line-height: 1.6;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.02);
+    
+    transition: background-color 0.3s ease, color 0.3s ease, font-size 0.2s ease;
+}
+
+.parrafo-dinamico {
+    margin-bottom: 1rem;
+    text-align: justify;
+}
