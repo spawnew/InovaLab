@@ -2,7 +2,7 @@ import  { useState } from 'react';
 
 export default function LectorTexto() {
   //
-  const [texto, setTexto] = useState('¡Hola Lucas! Felicitaciones estar en innovalab.');
+  const [texto, setTexto] = useState('¡Hola Grupo2! Felicitaciones estar en innovalab.');
  
   const [leyendo, setLeyendo] = useState(false);
 

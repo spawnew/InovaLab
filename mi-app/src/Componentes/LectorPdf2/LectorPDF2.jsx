@@ -5,7 +5,7 @@ pdfjsLib.GlobalWorkerOptions.workerSrc = new URL(
   'pdfjs-dist/build/pdf.worker.min.mjs',
   import.meta.url
 ).href;
-
+// esto es usando pdfjs-dist
 export default function VisorPdfPersonalizado() {
   const [lineasTexto, setLineasTexto] = useState([]);
   const [cargando, setCargando] = useState(false);
