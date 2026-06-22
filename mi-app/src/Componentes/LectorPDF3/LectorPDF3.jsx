@@ -13,7 +13,7 @@ function LectorPDF3() {
           borderRadius: "8px", 
           overflow: "hidden",
           height: "600px",
-                  backgroundColor: "#ec0f0f",
+                  backgroundColor: "#f7eaea",
           width: "600px",
           margin: "0 auto"
         }}
@@ -25,7 +25,8 @@ function LectorPDF3() {
           style={{ border: "none" }}
           title="Visualizador PDF"
         />
-      </div>
+        </div>
+        <input type="color"></input>
     </div>
   );
 }

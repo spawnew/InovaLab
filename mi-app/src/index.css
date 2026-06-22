@@ -51,7 +51,13 @@
 }
 
 body {
+  background-color: var(--color-fondo-dinamico, #1a1a1a);
+  color: var(--color-texto-dinamico, #ffffff);
+  transition: background-color 0.3s ease, color 0.3s ease;
+ 
+  font-family: sans-serif;
   margin: 0;
+  padding: 20px;
 }
 
 #root {
