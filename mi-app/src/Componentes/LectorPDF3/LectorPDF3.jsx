@@ -6,18 +6,8 @@ function LectorPDF3() {
         Visualizador de Apuntes
       </h2>
 
-      {/* Contenedor con el lector nativo del navegador */}
-      <div 
-        style={{ 
-          border: "1px solid #ccc", 
-          borderRadius: "8px", 
-          overflow: "hidden",
-          height: "600px",
-                  backgroundColor: "#f7eaea",
-          width: "600px",
-          margin: "0 auto"
-        }}
-      >
+   
+      <div >
         <iframe
           src="/01. TP integrador Esutdios judaicos 2024.pdf"
           width="100%"
