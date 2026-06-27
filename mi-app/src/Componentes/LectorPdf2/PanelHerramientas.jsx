@@ -1,5 +1,6 @@
 import Offcanvas from 'react-bootstrap/Offcanvas';
 import PaletaColor from '../Paleta/PaletaColor.jsx';
+import './style.css';
 export default function PanelHerramientas({ 
   show, 
   handleClose, 
@@ -10,7 +11,7 @@ export default function PanelHerramientas({
   aplicarTema 
 }) {
   return (
-    <Offcanvas show={show} onHide={handleClose} placement="end">
+    <Offcanvas show={show} onHide={handleClose} placement="end" className="form-panel">
       <Offcanvas.Header closeButton>
         <Offcanvas.Title>Opciones de Accesibilidad ⚙️</Offcanvas.Title>
       </Offcanvas.Header>
@@ -21,9 +22,9 @@ export default function PanelHerramientas({
         <div className="grupo-control">
           <h5>Tamaño de Letra</h5>
             <div className="botones">
-            <button className="btn btn-outline-secondary" onClick={() => setTamanioLetra(prev => Math.max(12, prev - 2))}>A-</button>
+            <button className="btn " onClick={() => setTamanioLetra(prev => Math.max(12, prev - 2))}>A-</button>
             <p >{tamanioLetra}px</p>
-            <button className="btn btn-outline-secondary" onClick={() => setTamanioLetra(prev => prev + 2)}>A+</button>
+            <button className="btn " onClick={() => setTamanioLetra(prev => prev + 2)}>A+</button>
           </div>
         </div>
 
