@@ -23,56 +23,37 @@ export default function HojaTexto({
     }
   };
 
-  const esTituloReal = (linea) => {
-    return (
-      linea.length < 40 && 
-      linea === linea.toUpperCase() && 
-      !linea.endsWith('.') && 
-      !linea.endsWith('?') && 
-      !linea.endsWith('!')
-    );
-  };
-
   return (
     <div
       className="texto-dinamico"
       onContextMenu={manejarClickSecundario} 
+      
       style={{
         backgroundColor: colorFondo,
         color: colorTexto,
         fontSize: `${tamanioLetra}px`,
         cursor: 'text',
-        padding: '24px',
-        borderRadius: '8px',
-        lineHeight: '1.5',        // Interlineado natural y cómodo
-        textAlign: 'left'         // Alineación a la izquierda para mejor lectura
+        padding: '15px',
+        borderRadius: '4px'
       }}
     >
       {lineasTexto.map((linea, index) => {
-        if (esTituloReal(linea)) {
+        if (linea.length < 40 && linea === linea.toUpperCase()) {
           return (
-            <h3
+            <div
               key={index}
               style={{
-                fontSize: `${tamanioLetra * 1.25}px`,
-                color: colorTexto === '#0d64dd' ? '#0f172a' : colorTexto,
+                fontSize: `${tamanioLetra * 1.3}px`,
+                color: colorTexto === '#334155' ? '#0f172a' : colorTexto,
                 marginTop: '1.5rem',
-                marginBottom: '0.5rem',
-                fontWeight: '700'
+                fontWeight: 'bold'
               }}
             >
               {linea}
-            </h3>
+            </div>
           );
         }
-        
-        // 🌟 SOLUCIÓN: Usamos un fragmento con un <br /> para saltar de renglón
-        // sin meter los márgenes pesados que tienen las etiquetas <p>
-        return (
-          <span key={index} style={{ display: 'block', marginBottom: '4px' }}>
-            {linea}
-          </span>
-        );
+        return <p key={index} className="parrafo-dinamico">{linea}</p>;
       })}
     </div>
   );
