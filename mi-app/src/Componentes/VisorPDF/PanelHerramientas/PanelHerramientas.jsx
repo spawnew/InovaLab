@@ -18,19 +18,19 @@ import './style.css';
  
 }) {
   return (
-    <Offcanvas 
-  show={show} 
-  onHide={handleClose} 
-  placement="end" 
-  className="form-panel"
-  backdrop={false} // <--- ESTO EVITA QUE SE CIERRE AL HACER CLIC FUERA
-  scroll={true}    // <--- OPCIONAL: permite seguir viendo el contenido de fondo
+    <Offcanvas
+    show={show}
+    onHide={handleClose}
+    placement="start"
+   
+      backdrop={false}
+      className="panel-accesibilidad"
 >
-      <Offcanvas.Header closeButton>
+      <Offcanvas.Header closeButton className="header-panel">
         <Offcanvas.Title>Opciones de Accesibilidad ⚙️</Offcanvas.Title>
       </Offcanvas.Header>
       
-      <Offcanvas.Body >
+      <Offcanvas.Body className="panel-body"> 
         
               <div className="form-panel">
      <TamañoLetra tamaño={tamanioLetra} setTamaño={setTamanioLetra} aplicarTemaTexto={aplicarTemaTexto}  aplicarTemaPDF={aplicarTemaPDF}  />

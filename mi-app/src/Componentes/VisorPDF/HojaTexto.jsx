@@ -7,8 +7,7 @@ export default function HojaTexto({
   tamanioLetra,
   setTextoGlobalSeleccionado,
   setMenuPosicion,
-  colorFondo,
-  colorTexto,
+ 
 }) {
 
  

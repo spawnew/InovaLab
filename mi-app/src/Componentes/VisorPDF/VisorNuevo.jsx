@@ -30,11 +30,14 @@ const [colorTextoPDF2, setColorTextoPDF2] = useState('#1a1a1a');;
     try {
       const response = await fetch('http://localhost:8080/api/v1/explanation', {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ texto: texto }),
+        
+        headers: {
+          'Content-Type': 'text/plain',
+        },
+        body: texto,
       });
-      const data = await response.json();
-      setExplicacionTexto(data.respuesta || "No se recibió respuesta.");
+      const data = await response.text();
+      setExplicacionTexto(data || "No se recibió respuesta.");
       setShowExplicacionModal(true);
     } catch (error) {
       console.error("Error al pedir explicación:", error);

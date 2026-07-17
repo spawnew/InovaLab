@@ -1,6 +1,6 @@
 import { useContext } from "react"; 
 import { ColorContext } from "../../Context/fondoContext";
-
+import './style.css';
 function PaletaColor() {    
  
   const { colorFondo, setColorFondo, colorTexto, setColorTexto } = useContext(ColorContext);
@@ -10,7 +10,7 @@ function PaletaColor() {
     
       <h3>Personalizá el Estilo</h3>
       
-      <div >
+      <div className="paleta-container">
         <label >Color de Fondo:</label>
         <input 
           type="color" 
@@ -18,14 +18,7 @@ function PaletaColor() {
           onChange={(e) => setColorFondo(e.target.value)} 
         />
       </div>
-      <div>
-        <label >Color de Letras:</label>
-        <input 
-          type="color" 
-          value={colorTexto} 
-          onChange={(e) => setColorTexto(e.target.value)} 
-        />
-      </div>
+     
     </div>
   );
 }
