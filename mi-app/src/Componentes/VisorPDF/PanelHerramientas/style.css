@@ -2,9 +2,12 @@
     background: #252527;
     color: #f1f5f9;
     padding: 20px;
-    height: 100%;
-    /* Asegúrate de que no haya un max-width aquí */
-    width: 100%;
+   
+    overflow-y: auto;
+    display: flex;
+  
+    flex-direction: column;
+   /
 }
 
 
@@ -165,21 +168,14 @@ hr {
     border-top-right-radius: 8px;
 }
 
-.form-panel {
-    background: #252527;
-    color: #f1f5f9;
-    padding: 20px;
-  
-   
-    font-family: "Segoe UI", sans-serif;
+.panel-body {
+    padding: 0 !important;
+    /* Fuerza a que no haya padding extra que oculte cosas */
+    display: flex;
+    flex-direction: column;
 }
 .panel-accesibilidad {
     background: #252527;
-    width:400px;
   
 
-
-}
-.panel-body{
-    padding: 0px;
 }

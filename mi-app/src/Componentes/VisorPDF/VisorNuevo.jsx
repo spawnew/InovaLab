@@ -8,7 +8,7 @@ import Concentrado from './Concentrado/Concentrado.jsx';
 
 export default function VisorAccesibleLTI() {
   const { pdfData, cargando, error } = useContext(PdfContext);
-  const { colorFondo, setColorFondo, colorTexto, setColorTexto } = useContext(ColorContext);
+  const { colorFondo,  colorTexto } = useContext(ColorContext);
  const [colorFondoPDF2, setColorFondoPDF2] = useState('#ffffff');
 const [colorTextoPDF2, setColorTextoPDF2] = useState('#1a1a1a');;
   const [tamanioLetra, setTamanioLetra] = useState(16);
@@ -126,9 +126,14 @@ const aplicarTemaPDF = (fondo, texto) => {
           <div className="info-lti-header" style={{ marginBottom: '15px', color: colorTexto }}>
             <h2>Documento procesado</h2>
           </div>
-
-          <button className="boton-accesible" onClick={() => setMenuAbierto(true)}>⚙️ Accesibilidad</button>
-
+<div className='botonera'>
+            
+          <button className="boton-accesible" onClick={() => setMenuAbierto(true)}>⚙️ Abrir Menú</button>
+          <button className="boton-accesible2" onClick={() => setMenuAbierto(false)}>⚙️ Cerrar Menú</button>
+         <button className='boton-concentrado' onClick={() => setShowModal(true)}>Modo Concentrado</button>
+            <Concentrado isOpen={showModal} onClose={() => setShowModal(false)} pdfData={pdfData} />
+          </div>
+          
           {reproduciendoSeleccion && (
             <button className="boton-dinamico" onClick={detenerTexto}>🛑 Detener Lectura</button>
           )}
@@ -170,10 +175,7 @@ const aplicarTemaPDF = (fondo, texto) => {
             setMenuPosicion={setMenuPosicion}
           />
 
-          <div>
-            <button onClick={() => setShowModal(true)}>Ver Apuntes en PDF</button>
-            <Concentrado isOpen={showModal} onClose={() => setShowModal(false)} pdfData={pdfData} />
-          </div>
+          
 
           {/* Modal de Explicación */}
           {showExplicacionModal && (

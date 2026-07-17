@@ -6,7 +6,7 @@ const TamañoLetra = ({ tamaño, setTamaño, aplicarTemaTexto, colorTextoPDF }) 
         <div className="grupo-control">
             <h5>Tamaño de Letra</h5>
             
-            {/* Contenedor principal: botones a la izquierda, color a la derecha */}
+          
             <div className="tamaño-container">
                 
                 <div className="botones-tamano">

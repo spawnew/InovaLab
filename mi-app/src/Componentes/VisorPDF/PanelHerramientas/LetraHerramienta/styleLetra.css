@@ -30,7 +30,7 @@
 }
 
 .boton {
-    background: #3d3f45;
+    background: #3c68eb;
     color: #fff;
     border: 1px solid #4a4d54;
     padding: 6px 14px;
@@ -66,10 +66,11 @@
 }
 
 input[type="color"] {
-    border: none;
+   
+    border:50px;
     width: 32px;
     height: 32px;
-    border-radius: 50%;
+    border-radius: 20px;
     cursor: pointer;
-    background: none;
+    background:black;
 }
