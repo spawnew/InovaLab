@@ -3,18 +3,29 @@ import PaletaColor from '../../Paleta/PaletaColor.jsx';
 import '../../VisorPDF/style.css';
 import ColorFondo from './ColorFondo.jsx';
 import HerramientaVoz from './HerramientaVoz.jsx';
-import TamañoLetra from './TamañoLetra.jsx';
-export default function PanelHerramientas({ 
+import TamañoLetra from './LetraHerramienta/TamañoLetra.jsx';
+import './style.css';
+ function PanelHerramientas({ 
   show, 
   handleClose, 
   tamanioLetra, 
   setTamanioLetra, 
   alEscuchar, 
   alDetener, 
-  aplicarTema 
+   aplicarTemaPDF,
+  aplicarTemaFondo,
+  aplicarTemaTexto
+ 
 }) {
   return (
-    <Offcanvas show={show} onHide={handleClose} placement="end" className="form-panel">
+    <Offcanvas 
+  show={show} 
+  onHide={handleClose} 
+  placement="end" 
+  className="form-panel"
+  backdrop={false} // <--- ESTO EVITA QUE SE CIERRE AL HACER CLIC FUERA
+  scroll={true}    // <--- OPCIONAL: permite seguir viendo el contenido de fondo
+>
       <Offcanvas.Header closeButton>
         <Offcanvas.Title>Opciones de Accesibilidad ⚙️</Offcanvas.Title>
       </Offcanvas.Header>
@@ -22,7 +33,7 @@ export default function PanelHerramientas({
       <Offcanvas.Body >
         
               <div className="form-panel">
-     <TamañoLetra tamaño={tamanioLetra} setTamaño={setTamanioLetra} />
+     <TamañoLetra tamaño={tamanioLetra} setTamaño={setTamanioLetra} aplicarTemaTexto={aplicarTemaTexto}  aplicarTemaPDF={aplicarTemaPDF}  />
 
        
         <div className="grupo-control">
@@ -32,12 +43,32 @@ export default function PanelHerramientas({
 
         {/* Sección de Temas */}
         <div className="grupo-control">
-          <h5>Color de Fondo</h5>
-          <ColorFondo aplicarTema={aplicarTema} />
+          <h5>Color del Fondo PDF</h5>
+         <ColorFondo 
+    aplicarTemaPDF={aplicarTemaPDF} 
+    aplicarTemaFondo={aplicarTemaFondo}
+    
+/>
                   </div>
-                  <PaletaColor />
-              </div>
+                  <PaletaColor  />
+        </div>
+        <div style={{ marginTop: '20px', textAlign: 'center' }}>
+      <button 
+        onClick={handleClose} 
+        style={{ 
+          background: '#ef4444', 
+          color: 'white', 
+          border: 'none', 
+          padding: '10px 20px', 
+          borderRadius: '5px',
+          cursor: 'pointer' 
+        }}
+      >
+        Cerrar Panel
+          </button>
+          </div>
       </Offcanvas.Body>
     </Offcanvas>
   );
 }
+export default PanelHerramientas;

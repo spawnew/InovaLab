@@ -1,21 +1,31 @@
-import '../style.css';
-
-
-const colorFondo = ({aplicarTema}) => {
-    
-
+const ColorFondo = ({ aplicarTemaPDF, colorFondoPDF, aplicarTemaFondo }) => {
     return (
-        
+        <div className="botones">
+            {/* Botones de Temas */}
+            <button onClick={() => aplicarTemaPDF('#f0e7e7', '#334155')} className="btn-tema" style={{ background: '#f0e7e7' }}>
+                ☀️ Modo Claro
+            </button>
+            <button onClick={() => aplicarTemaPDF('#f4f1ea', '#433422')} className="btn-tema" style={{ background: '#f4f1ea' }}>
+                📜 Modo Sepia
+            </button>
+            <button onClick={() => aplicarTemaPDF('#1e293b', '#f8fafc')} className="btn-tema" style={{ background: '#1e293b', color: '#f8fafc' }}>
+                🌙 Modo Oscuro
+            </button>
 
- <div className="botones"> 
-            <button onClick={() => aplicarTema('#f0e7e7', '#334155')} className="btn btn-light border text-start">☀️ Modo Claro</button>
-            <button onClick={() => aplicarTema('#f4f1ea', '#433422')} className="btn text-start" style={{ backgroundColor: '#f4f1ea', color: '#433422', border: '1px solid #dcd7ca' }}>📜 Modo Sepia</button>
-            <button onClick={() => aplicarTema('#1e293b', '#f8fafc')} className="btn btn-dark text-start">🌙 Modo Oscuro</button>
-          </div>
+            {/* Separador visual */}
+            <hr style={{ width: '100%', border: '0', borderTop: '1px solid #cbd5e1' }} />
 
+            {/* Selector de Color */}
+            <div className="color-picker-container">
+                <label>Texto Color:</label>
+                <input 
+                    type="color" 
+                    value={colorFondoPDF} 
+                    onChange={(e) => aplicarTemaFondo(e.target.value)} 
+                />
+            </div>
+        </div>
+    );
+};
 
-
-
-    )
-} 
-export default colorFondo;
+export default ColorFondo;

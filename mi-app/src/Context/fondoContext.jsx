@@ -36,4 +36,3 @@ const colores = { colorFondo, setColorFondo, colorTexto, setColorTexto };
   );
 
 } 
-

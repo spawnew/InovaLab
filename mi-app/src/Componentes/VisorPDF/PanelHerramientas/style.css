@@ -1,0 +1,59 @@
+/* Estilo del contenedor del Offcanvas */
+.form-panel {
+    padding: 10px;
+    background-color: #ffffff;
+    height: 100%;
+}
+
+/* Tarjeta contenedora de cada herramienta */
+.grupo-control {
+    background: #ffffff;
+    padding: 15px;
+    border-radius: 12px;
+    border: 1px solid #e2e8f0;
+    margin-bottom: 15px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.grupo-control h5 {
+    font-size: 0.9rem;
+    color: #64748b;
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    border-bottom: 1px solid #f1f5f9;
+    padding-bottom: 8px;
+}
+
+/* Estilo para los botones de temas */
+.btn-tema {
+    width: 100%;
+    margin-bottom: 8px;
+    padding: 10px;
+    border: 1px solid #cbd5e1;
+    border-radius: 8px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: transform 0.1s ease;
+}
+
+.btn-tema:hover {
+    transform: scale(1.02);
+}
+
+/* Estilo para el contenedor de color */
+.color-picker-container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 10px;
+}
+
+/* Ajuste general de botones */
+.btn {
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+}
