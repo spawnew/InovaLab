@@ -8,10 +8,11 @@ function PaletaColor() {
   return (
     <div> 
     
-      <h3>Personalizá el Estilo</h3>
+      
       
       <div className="paleta-container">
-        <label >Color de Fondo:</label>
+        
+        <label > Fondo de la Página</label>
         <input 
           type="color" 
           value={colorFondo} 

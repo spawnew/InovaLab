@@ -6,8 +6,10 @@
     padding: 10px;
     border-radius: 8px;
     gap: 15px;
+    justify-content: center;
    
 }
+
 
 .botones-tamano {
     display: flex;
@@ -69,6 +71,9 @@
     border-radius: 10px;
     width: 1126px;
     margin: 0 auto;
+    
+    font-family: 'Nunito';
+        
 
     text-align: center;
    
@@ -90,4 +95,7 @@
         transition: background 0.3s;
         margin: 5px;
     
+    }
+.menu{
+        display:flex;
     }

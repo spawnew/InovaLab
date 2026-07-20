@@ -1,15 +1,14 @@
 .form-panel {
-    background: #252527;
+    background-color: #17191a;
     color: #f1f5f9;
-    padding: 20px;
-   
+   padding:10px;
+  justify-items: center;
     overflow-y: auto;
     display: flex;
   
     flex-direction: column;
-   /
+   
 }
-
 
 
 .form-panel::-webkit-scrollbar {
@@ -24,12 +23,17 @@
 /* Tarjetas */
 
 .grupo-control {
-    background: #2b2f3b;
+background-color: #0e0f0f;
     border-radius: 16px;
     padding: 20px;
-    margin-bottom: 20px;
+    margin: 20px;
     box-shadow: 0 6px 15px rgba(0, 0, 0, .25);
     transition: .25s;
+    display:flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  
 }
 
 .grupo-control:hover {
@@ -37,11 +41,13 @@
 }
 
 .grupo-control h5 {
+   
     margin-bottom: 18px;
-    color: #94a3b8;
+    color: #f3eded;
     text-transform: uppercase;
     letter-spacing: 1px;
     font-size: .75rem;
+
 }
 
 /* Botones */
@@ -113,16 +119,24 @@
 
 .color-picker-container {
     display: flex;
-    justify-content: space-between;
+    justify-content:center;
     align-items: center;
-    padding: 12px;
-    background: #1a2720;
+   
+  
     border-radius: 10px;
     color:white;
+   
+    
+}
+.offcanvas.panel-accesibilidad {
+    width: 650px ;
+   
+    max-width: 100%;
 }
 
 .color-picker-container label {
     font-weight: 600;
+    margin: 10px;
 }
 
 input[type=color] {
@@ -149,7 +163,7 @@ hr {
     padding: 12px;
     border: none;
     border-radius: 10px;
-    background: #ef4444;
+    background: #e41809;
     color: white;
     font-weight: bold;
     cursor: pointer;
@@ -160,22 +174,30 @@ hr {
     background: #dc2626;
 }
 .header-panel {
-    background: #1b1d24;
-    color: #f1f5f9;
-    padding: 10px 20px;
-    border-bottom: 1px solid #4a5568;
+    background-color: #212324;
+    color: #e9edf1;
+    
+    
     border-top-left-radius: 8px;
     border-top-right-radius: 8px;
+    align-items: center;
+    justify-content: center;
+    display:flex;
 }
+
 
 .panel-body {
     padding: 0 !important;
-    /* Fuerza a que no haya padding extra que oculte cosas */
+
     display: flex;
     flex-direction: column;
 }
 .panel-accesibilidad {
-    background: #252527;
+   
+    display:flex;
+    justify-items: center;
+    flex-direction: column;
+    background-color: #18191a;
   
 
 }

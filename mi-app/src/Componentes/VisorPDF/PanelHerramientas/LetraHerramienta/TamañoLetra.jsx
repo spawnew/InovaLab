@@ -15,14 +15,15 @@ const TamañoLetra = ({ tamaño, setTamaño, aplicarTemaTexto, colorTextoPDF }) 
                     <button className="boton" onClick={() => setTamaño(prev => prev + 2)}>A+</button>
                 </div>
 
-                <div className="selector-texto">
-                    <label>Color de Letra:</label>
-                    <input 
-                        type="color" 
-                        value={colorTextoPDF} 
-                        onChange={(e) => aplicarTemaTexto(e.target.value)} 
-                    />
-                </div>
+               <div className="selector-texto">
+    <label>Color de Letra:</label>
+
+    <input
+        type="color"
+        value={colorTextoPDF}
+        onChange={(e)=>aplicarTemaTexto(e.target.value)}
+    />
+</div>
             </div>
         </div>
     );

@@ -1,0 +1,104 @@
+.menu-flotante {
+    position: fixed;
+    z-index: 2000;
+    /* Asegura que esté por encima de todo (modales, paneles) */
+
+    /* Estilos visuales modernos */
+    background-color: #79bfeb;
+    /* Fondo oscuro del panel principal */
+    border: 1px solid #363646;
+    /* Borde sutil */
+    border-radius: 12px;
+    /* Esquinas redondeadas */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+    /* Sombra profunda */
+
+    /* Espaciado interno */
+    padding: 8px;
+
+    /* Animación suave de aparición */
+    animation: menuPopIn 0.2s ease-out;
+
+    /* Evita selección de texto accidental en el menú */
+    user-select: none;
+
+    /* Asegura que los botones se apilen correctamente */
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    /* Espacio pequeño entre botones */
+}
+
+/* Keyframes para la animación */
+@keyframes menuPopIn {
+    from {
+        opacity: 0;
+        transform: scale(0.95) translateY(5px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+/* Estilos para los botones dentro del menú */
+.menu-flotante button {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    /* Espacio entre icono y texto */
+
+    width: 100%;
+    padding: 10px 16px;
+
+    background: transparent;
+    border: none;
+    color: #e2e8f0;
+    /* Texto claro */
+
+    font-size: 0.9rem;
+    font-family: inherit;
+    /* Usa la fuente del body */
+    text-align: left;
+
+    border-radius: 8px;
+    /* Botones redondeados dentro del menú */
+    cursor: pointer;
+
+    transition: background-color 0.2s ease, transform 0.1s ease;
+}
+
+/* Efecto hover (al pasar el ratón) */
+.menu-flotante button:hover {
+    background-color: #2a2a35;
+    /* Un tono más claro que el fondo */
+    color: #ffffff;
+}
+
+/* Efecto active (al hacer clic) */
+.menu-flotante button:active {
+    transform: scale(0.98);
+    /* Pequeño efecto de presión */
+}
+
+
+
+.btn-menu-explicar {
+    background-color: #0d64dd !important;
+    /* Azul fuerte para destacar */
+    color: white !important;
+    font-weight: 600;
+    margin-top: 4px;
+    /* Separador visual sutil */
+}
+
+.btn-menu-explicar:hover {
+    background-color: #0b5bc6 !important;
+}
+
+/* Estado de carga del botón */
+.btn-menu-explicar:disabled {
+    opacity: 0.6;
+    cursor: wait;
+}

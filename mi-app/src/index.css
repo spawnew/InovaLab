@@ -1,3 +1,5 @@
+@import url('https://googleapis.com');
+@import "tailwindcss";
 :root {
   --text: #6b6375;
   --text-h: #08060d;
@@ -30,6 +32,7 @@
   }
 }
 
+
 @media (prefers-color-scheme: dark) {
   :root {
     --text: #9ca3af;
@@ -51,13 +54,13 @@
 }
 
 body {
-  background-color: var(--color-fondo-dinamico, #1a1a1a);
+  background-color: var(--color-fondo-dinamico, #DaE9F0);
   color: var(--color-texto-dinamico, #ffffff);
   transition: background-color 0.3s ease, color 0.3s ease;
- 
-  font-family: sans-serif;
+ color:#08060d;
+  font-family: 'Nunito';
   margin: 0;
-  padding: 20px;
+  padding: 0px;
 }
 
 #root {

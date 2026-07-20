@@ -11,11 +11,11 @@ function App() {
   return (
     <>
      
-      
+    <PdfProvider>   
     
       <Navbar />
     
-    <PdfProvider> 
+    
       <ColorProvider>
           <VisorNuevo /> 
         

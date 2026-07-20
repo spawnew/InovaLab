@@ -4,6 +4,7 @@ import '../../VisorPDF/style.css';
 import ColorFondo from './ColorFondo.jsx';
 import HerramientaVoz from './HerramientaVoz.jsx';
 import TamañoLetra from './LetraHerramienta/TamañoLetra.jsx';
+import Resumen from './Resumen.jsx'
 import './style.css';
  function PanelHerramientas({ 
   show, 
@@ -14,7 +15,8 @@ import './style.css';
   alDetener, 
    aplicarTemaPDF,
   aplicarTemaFondo,
-  aplicarTemaTexto
+   aplicarTemaTexto,
+  solicitarResumen
  
 }) {
   return (
@@ -22,23 +24,26 @@ import './style.css';
     show={show}
     onHide={handleClose}
     placement="start"
-   
-      backdrop={false}
-      className="panel-accesibilidad"
+      scroll={true}
+      backdrop={true}
+      className="panel-accesibilidad "
 >
-      <Offcanvas.Header closeButton className="header-panel">
+      <Offcanvas.Header closeButton className="text-amber-50 flex flex-col ">
         <Offcanvas.Title>Opciones de Accesibilidad ⚙️</Offcanvas.Title>
       </Offcanvas.Header>
       
-      <Offcanvas.Body className="panel-body"> 
+      <Offcanvas.Body className="panel-body "> 
         
               <div className="form-panel">
      <TamañoLetra tamaño={tamanioLetra} setTamaño={setTamanioLetra} aplicarTemaTexto={aplicarTemaTexto}  aplicarTemaPDF={aplicarTemaPDF}  />
 
-       
+         
         <div className="grupo-control">
           <h5>Herramientas de Voz</h5>
-          <HerramientaVoz alEscuchar={alEscuchar} alDetener={alDetener} />
+            <HerramientaVoz alEscuchar={alEscuchar} alDetener={alDetener} />
+       <div>
+             <Resumen solicitarResumen={solicitarResumen}></Resumen>
+       </div>
         </div>
 
         {/* Sección de Temas */}
@@ -48,23 +53,19 @@ import './style.css';
     aplicarTemaPDF={aplicarTemaPDF} 
     aplicarTemaFondo={aplicarTemaFondo}
     
-/>
-                  </div>
-                  <PaletaColor  />
+            />
+            <PaletaColor />
+        
+          
+                  </div >
+                 
         </div>
         <div style={{ marginTop: '20px', textAlign: 'center' }}>
       <button 
         onClick={handleClose} 
-        style={{ 
-          background: '#ef4444', 
-          color: 'white', 
-          border: 'none', 
-          padding: '10px 20px', 
-          borderRadius: '5px',
-          cursor: 'pointer' 
-        }}
+            className='bg-red-600 p-2  rounded-2xl text-amber-50 hover:bg-black hover:text-red-600'
       >
-        Cerrar Panel
+        Cerrar Panel 
           </button>
           </div>
       </Offcanvas.Body>
