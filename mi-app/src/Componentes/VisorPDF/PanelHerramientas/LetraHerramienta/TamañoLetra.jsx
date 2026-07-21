@@ -3,7 +3,7 @@ import './styleLetra.css';
 
 const TamañoLetra = ({ tamaño, setTamaño, aplicarTemaTexto, colorTextoPDF }) => {
     return (
-        <div className="grupo-control">
+        <div className="grupo-control ">
             <h5>Tamaño de Letra</h5>
             
           

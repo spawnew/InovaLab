@@ -1,7 +1,8 @@
 import './style.css';
+import PaletaColor from '../../Paleta/PaletaColor';
 const ColorFondo = ({ aplicarTemaPDF, colorFondoPDF, aplicarTemaFondo }) => {
     return (
-        <div className="flex flex-col items-center p-2 align-center m-3">
+        <div className="flex flex-col items-center p-2 align-center m-3 bg-gray-200 rounded-2xl">
             {/* Botones de Temas */}
             <button onClick={() => aplicarTemaPDF('#f0e7e7', '#334155')} className="btn-tema m-3" style={{ background: '#f0ecec' }}>
                 ☀️ Modo Claro
@@ -17,13 +18,14 @@ const ColorFondo = ({ aplicarTemaPDF, colorFondoPDF, aplicarTemaFondo }) => {
 
       
             <div className="color-picker-container m-2 ">
-                <label> Color de fondo </label>
+                <label className='mr-3'> Color de fondo </label>
                 <input 
                     type="color" 
                     value={colorFondoPDF} 
                     onChange={(e) => aplicarTemaFondo(e.target.value)} 
                 />
             </div>
+            <PaletaColor></PaletaColor>
         </div>
     );
 };

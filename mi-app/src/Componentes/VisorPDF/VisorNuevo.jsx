@@ -4,7 +4,7 @@ import HojaTexto from './HojaTexto';
 import './style.css';
 import { ColorContext } from '../../Context/fondoContext.jsx';
 import { PdfContext } from '../../Context/PdfContext.jsx';
-import Concentrado from '../Navbar/Concentrado/Concentrado.jsx';
+
 import './styleMenu.css';
 
 export default function VisorAccesibleLTI() {
@@ -19,7 +19,7 @@ export default function VisorAccesibleLTI() {
   const [menuPosicion, setMenuPosicion] = useState(null);
   const [reproduciendoSeleccion, setReproduciendoSeleccion] = useState(false);
   const [showModal, setShowModal] = useState(false);
-
+  const [ tipoLetra, setTipoLetra ] = useState('Nunito');
 
   const [showExplicacionModal, setShowExplicacionModal] = useState(false);
   const [explicacionTexto, setExplicacionTexto] = useState('');
@@ -113,6 +113,9 @@ export default function VisorAccesibleLTI() {
   const aplicarTematexto = (texto) => {
     setColorTextoPDF2(texto);
   };
+  const cambiarLetra = (letra) => {
+    setTipoLetra(letra);
+  };
 
   if (cargando) return <div className="pdf-status">Extrayendo y optimizando el texto para accesibilidad...</div>;
   if (error) return <div className="pdf-status" style={{ color: '#ef4444', padding: '20px' }}><h3>⚠️ Error</h3><p>{error}</p></div>;
@@ -122,19 +125,13 @@ export default function VisorAccesibleLTI() {
       backgroundColor: colorFondo, 
       color: colorTexto, 
       minHeight: '100vh', 
-      transition: 'background-color 0.3s ease' 
+      transition: 'background-color 0.3s ease',
+      fontFamily:tipoLetra
     }} onClick={() => setMenuPosicion(null)}>
       {pdfData ? (
         <>
           <div className="info-lti-header text-amber-50" style={{ marginBottom: '15px', color:"#0e0707" }}>
-            {userData && (
-              <>
-                <p className='text-amber-50'>Hola {userData.user}</p>
-                <p className='text-amber-50'>{userData.email}</p>
-                <p className='text-amber-50'>{userData.section}</p>
-                <p className='text-amber-50'>{userData.course}</p>
-              </>
-            )}
+            
           </div>
           
           <div className='botonera'>
@@ -184,7 +181,8 @@ export default function VisorAccesibleLTI() {
              setTamanioLetra={setTamanioLetra}
              alEscuchar={leerTexto}
              alDetener={detenerTexto}
-             solicitarResumen={solicitarResumen}
+            solicitarResumen={solicitarResumen}
+            cambiarLetra={cambiarLetra}
           />
 
           <HojaTexto

@@ -10,7 +10,7 @@
     font-size: 20px;
     font-family: Arial, sans-serif;
     width: 100%;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 .links{
   list-style: none;
@@ -21,3 +21,18 @@
 .nav-links img{
   border-radius: 30px;
 }
+ button.boton-concentrado {
+background-color: #c8def3;
+  color: #0e0c0c;
+  border: 1px solid #374151;
+  padding: 6px 12px;
+  border-radius: 6px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: background-color 0.2s ease;
+}
+  
+  .boton-concentrado:hover {
+    background-color: #f1f2f3 ;
+    color:#131212;
+  }
