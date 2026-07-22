@@ -10,7 +10,10 @@ import './styleMenu.css';
 export default function VisorAccesibleLTI() {
   const { pdfData, cargando, error, userData } = useContext(PdfContext);
   const { colorFondo, colorTexto } = useContext(ColorContext);
-  
+  const [palabraBuscada, setPalabraBuscada] = useState('');
+
+
+
   const [colorFondoPDF2, setColorFondoPDF2] = useState('#ffffff');
   const [colorTextoPDF2, setColorTextoPDF2] = useState('#1a1a1a');
   const [tamanioLetra, setTamanioLetra] = useState(16);
@@ -116,7 +119,17 @@ export default function VisorAccesibleLTI() {
   const cambiarLetra = (letra) => {
     setTipoLetra(letra);
   };
+ function borrarFiltros(){
+    setColorFondoPDF2('#ffffff');
+    setColorTextoPDF2('#1a1a1a');
+    setTipoLetra('sans-serif');
+    setTamanioLetra(16);
+    setPalabraBuscada(''); 
+  }
 
+  const manejarBusqueda = (datosFormulario) => {
+  setPalabraBuscada(datosFormulario); 
+};
   if (cargando) return <div className="pdf-status">Extrayendo y optimizando el texto para accesibilidad...</div>;
   if (error) return <div className="pdf-status" style={{ color: '#ef4444', padding: '20px' }}><h3>⚠️ Error</h3><p>{error}</p></div>;
 
@@ -189,18 +202,21 @@ export default function VisorAccesibleLTI() {
              alDetener={detenerTexto}
             solicitarResumen={solicitarResumen}
             cambiarLetra={cambiarLetra}
+            borrarFiltros={borrarFiltros}
+            manejarBusqueda={manejarBusqueda}
           />
 
           <HojaTexto
-             colorFondoPDF={colorFondoPDF2}
-             colorTextoPDF={colorTextoPDF2}
-             lineasTexto={pdfData.split('\n')}
-             colorFondo={colorFondo}
-             colorTexto={colorTexto}
-             tamanioLetra={tamanioLetra}
-             setTextoGlobalSeleccionado={setTextoGlobalSeleccionado}
-             setMenuPosicion={setMenuPosicion}
-          />
+   colorFondoPDF={colorFondoPDF2}
+   colorTextoPDF={colorTextoPDF2}
+   lineasTexto={pdfData.split('\n')}
+   colorFondo={colorFondo}
+   colorTexto={colorTexto}
+   tamanioLetra={tamanioLetra}
+   setTextoGlobalSeleccionado={setTextoGlobalSeleccionado}
+   setMenuPosicion={setMenuPosicion}
+   palabraBuscada={palabraBuscada} 
+/>
 
        
           {showExplicacionModal && (

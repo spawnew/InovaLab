@@ -1,65 +1,55 @@
-import "./style.css";
+import React from 'react';
 
 export default function HojaTexto({
-  lineasTexto,
   colorFondoPDF,
   colorTextoPDF,
+  lineasTexto,
   tamanioLetra,
   setTextoGlobalSeleccionado,
   setMenuPosicion,
+  palabraBuscada
 }) {
 
-  const manejarClickSecundario = (e) => {
-    const seleccion = window.getSelection();
-    const texto = seleccion.toString().trim();
 
-    if (texto.length > 0) {
-      e.preventDefault();
-      setTextoGlobalSeleccionado(texto);
-      setMenuPosicion({
-        x: e.clientX,
-        y: e.clientY,
-      });
-    }
-  };
+  const resaltarTexto = (linea) => {
+    if (!palabraBuscada || palabraBuscada.trim() === "") return linea;
 
-  const esTituloReal = (linea) => {
-    return (
-      linea.length < 40 &&
-      linea === linea.toUpperCase() &&
-      !linea.endsWith(".") &&
-      !linea.endsWith("?") &&
-      !linea.endsWith("!")
+   
+    const escaparRegExp = (string) => string.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+    const regex = new RegExp(`(${escaparRegExp(palabraBuscada)})`, 'gi');
+    
+    const partes = linea.split(regex);
+    return partes.map((parte, i) => 
+      regex.test(parte) ? <mark key={i} style={{ backgroundColor: '#fde047', color: '#000' }}>{parte}</mark> : parte
     );
   };
 
+  const handleMouseUp = (e) => {
+    const seleccion = window.getSelection().toString().trim();
+    if (seleccion.length > 0) {
+      setTextoGlobalSeleccionado(seleccion);
+      setMenuPosicion({ x: e.clientX, y: e.clientY });
+    }
+  };
+
   return (
-    <div
-      className="texto-dinamico"
-      onContextMenu={manejarClickSecundario}
+    <div 
+      className="hoja-texto"
       style={{
         backgroundColor: colorFondoPDF,
         color: colorTextoPDF,
         fontSize: `${tamanioLetra}px`,
+        padding: '20px',
+        borderRadius: '8px',
+        lineHeight: '1.6'
       }}
+      onMouseUp={handleMouseUp}
     >
-      {lineasTexto.map((linea, index) =>
-        esTituloReal(linea) ? (
-          <h3
-            key={index}
-            className="titulo-pdf"
-            style={{
-              fontSize: `${tamanioLetra * 1.35}px`,
-            }}
-          >
-            {linea}
-          </h3>
-        ) : (
-          <p key={index} className="parrafo-pdf">
-            {linea}
-          </p>
-        )
-      )}
+      {lineasTexto.map((linea, index) => (
+        <p key={index} style={{ margin: '0 0 10px 0' }}>
+          {resaltarTexto(linea)}
+        </p>
+      ))}
     </div>
   );
 }

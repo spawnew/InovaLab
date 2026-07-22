@@ -18,6 +18,7 @@ import ColorFondo from "./ColorFondo/ColorFondo";
 import HerramientaVoz from "../HerramientaVoz/HerramientaVoz";
 import TamañoLetra from "./LetraHerramienta/TamañoLetra";
 import Resumen from "./Resumen";
+import Buscar from "./Buscar/Buscar";
 
 import "./style.css";
 
@@ -32,7 +33,9 @@ export default function PanelHerramientas({
   aplicarTemaFondo,
   aplicarTemaTexto,
   solicitarResumen,
-  cambiarLetra
+  cambiarLetra,
+  borrarFiltros,
+  manejarBusqueda
 }) {
   const [submenuAbierto, setSubmenuAbierto] = useState(null);
 
@@ -142,27 +145,36 @@ export default function PanelHerramientas({
 
           <p className="categoria">MÁS</p>
 
-          <button className="menu-item">
-            <div className="menu-info">
-              <MdSearch className="menu-icono" />
-              <div>
-                <h6>Buscar</h6>
-                <small>Buscar texto</small>
-              </div>
-            </div>
-            <MdChevronRight className="flecha" />
-          </button>
+          <button
+  className={`menu-item ${submenuAbierto === "buscar" ? "activo" : ""}`}
+  onClick={() => setSubmenuAbierto("buscar")}
+>
+  <div className="menu-info">
+    <MdSearch className="menu-icono" />
+    <div>
+      <h6>Buscar</h6>
+      <small>Buscar texto</small>
+    </div>
+  </div>
+  <MdChevronRight className="flecha" />
+</button>
 
-          <button className="menu-item">
-            <div className="menu-info">
-              <MdSettings className="menu-icono" />
-              <div>
-                <h6>Configuración</h6>
-                <small>Preferencias</small>
-              </div>
-            </div>
-            <MdChevronRight className="flecha" />
-          </button>
+          <button 
+  className="menu-item"
+  onClick={() => {
+   
+      borrarFiltros();
+    
+  }}
+>
+  <div className="menu-info">
+    <MdSettings className="menu-icono" />
+    <div>
+      <h6>Borrar Preferencias</h6>
+      <small>Reinicia las preferencias</small>
+    </div>
+  </div>
+</button>
         </div>
 
         <div className="panel-footer">
@@ -181,12 +193,14 @@ export default function PanelHerramientas({
                 ←
               </button>
               <h5>
-                {submenuAbierto === "herramientas" && "Herramientas"}
-                {submenuAbierto === "voz" && "Lectura"}
-                {submenuAbierto === "apariencia" && "Apariencia"}
-                {submenuAbierto === "texto" && "Tamaño del texto"}
-                {submenuAbierto === "tipografia" && "Tipografía"}
-              </h5>
+    {submenuAbierto === "herramientas" && "Herramientas"}
+    {submenuAbierto === "voz" && "Lectura"}
+    {submenuAbierto === "apariencia" && "Apariencia"}
+    {submenuAbierto === "texto" && "Tamaño del texto"}
+    {submenuAbierto === "tipografia" && "Tipografía"}
+    {submenuAbierto === "borrarPreferencias" && "Borrar Preferencias"} {/* <-- Corregido */}
+    {submenuAbierto === "buscar" && "Buscar"}
+  </h5>
             </div>
 
             <div className="submenu-body">
@@ -218,6 +232,10 @@ export default function PanelHerramientas({
                   aplicarTemaPDF={aplicarTemaPDF}
                 />
               )}
+              {submenuAbierto === "buscar" && (
+  <Buscar manejarBusqueda={manejarBusqueda} />
+)}
+              
             </div>
           </div>
         )}
