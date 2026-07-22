@@ -1,10 +1,10 @@
 import { useState, useContext } from 'react';
 import PanelHerramientas from './PanelHerramientas/PanelHerramientas.jsx';
-import HojaTexto from './HojaTexto';
+import HojaTexto from './HojaTexto/HojaTexto.jsx';
 import './style.css';
 import { ColorContext } from '../../Context/fondoContext.jsx';
 import { PdfContext } from '../../Context/PdfContext.jsx';
-
+import { MdStopCircle } from "react-icons/md";
 import './styleMenu.css';
 
 export default function VisorAccesibleLTI() {
@@ -20,7 +20,7 @@ export default function VisorAccesibleLTI() {
   const [reproduciendoSeleccion, setReproduciendoSeleccion] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [ tipoLetra, setTipoLetra ] = useState('Nunito');
-
+  
   const [showExplicacionModal, setShowExplicacionModal] = useState(false);
   const [explicacionTexto, setExplicacionTexto] = useState('');
   const [cargandoExplicacion, setCargandoExplicacion] = useState(false);
@@ -58,7 +58,7 @@ export default function VisorAccesibleLTI() {
     setCargandoExplicacion(true);
     setTipoModal('resumen'); 
     try {
-      const response = await fetch('http://localhost:8080/api/v1/summarization', { 
+      const response = await fetch('http://localhost:8080/api/v1/summarize', { 
         method: 'POST',
         headers: {
           'Content-Type': 'text/plain', 
@@ -140,9 +140,15 @@ export default function VisorAccesibleLTI() {
          
           </div>
           
-          {reproduciendoSeleccion && (
-            <button className="boton-dinamico" onClick={detenerTexto}>🛑 Detener Lectura</button>
-          )}
+         {reproduciendoSeleccion && (
+    <button
+        className="btn-detener-lectura"
+        onClick={detenerTexto}
+    >
+        <MdStopCircle size={22} />
+        <span>Detener lectura</span>
+    </button>
+)}
 
         
           {menuPosicion && (

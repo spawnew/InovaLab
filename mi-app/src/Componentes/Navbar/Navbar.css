@@ -1,38 +1,145 @@
+/* =====================================
+   NAVBAR
+===================================== */
+
 .nav-links {
+
   display: flex;
-  margin: 0;
-  padding: 19px;
-  background-color: #DAE9F0;
-  border-radius: 8px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-    color: #eef5f5;
-    font-weight:bolder;
-    font-size: 20px;
-    font-family: Arial, sans-serif;
-    width: 100%;
-    justify-content: space-around;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 100%;
+
+  padding: 14px 28px;
+
+  background: #ffffff;
+
+  border-bottom: 1px solid #e5e7eb;
+
+  box-shadow: 0 2px 12px rgba(0, 0, 0, .06);
+
 }
-.links{
-  list-style: none;
-  display:flex;
-  flex-direction: row;
+
+/* =====================================
+   LOGO
+===================================== */
+
+.logo-container {
+
+  display: flex;
+
+  align-items: center;
+
+}
+
+.logo {
+
+  height: 48px;
+
+  width: auto;
+
+  object-fit: contain;
+
+  transition: .25s;
+
+}
+
+.logo:hover {
+
+  transform: scale(1.05);
+
+}
+
+/* =====================================
+   ACCIONES
+===================================== */
+
+.nav-actions {
+
+  display: flex;
+
+  align-items: center;
+
+  gap: 18px;
+
+}
+
+/* =====================================
+   BOTÓN
+===================================== */
+
+.boton-concentrado {
+
+  display: flex;
+
+  align-items: center;
+
   justify-content: center;
-}
-.nav-links img{
-  border-radius: 30px;
-}
- button.boton-concentrado {
-background-color: #c8def3;
-  color: #0e0c0c;
-  border: 1px solid #374151;
-  padding: 6px 12px;
-  border-radius: 6px;
-  font-weight: 500;
+
+  gap: 8px;
+
+  background: #2563eb;
+
+  color: white;
+
+  border: none;
+
+  border-radius: 12px;
+
+  padding: 11px 20px;
+
+  font-size: .95rem;
+
+  font-weight: 600;
+
   cursor: pointer;
-  transition: background-color 0.2s ease;
+
+  transition: .25s;
+
+  box-shadow: 0 6px 18px rgba(37, 99, 235, .25);
+
 }
-  
-  .boton-concentrado:hover {
-    background-color: #f1f2f3 ;
-    color:#131212;
+
+.boton-concentrado:hover {
+
+  background: #1d4ed8;
+
+  transform: translateY(-2px);
+
+  box-shadow: 0 10px 22px rgba(37, 99, 235, .35);
+
+}
+
+.boton-concentrado:active {
+
+  transform: scale(.98);
+
+}
+
+/* =====================================
+   RESPONSIVE
+===================================== */
+
+@media(max-width:768px) {
+
+  .nav-links {
+
+    padding: 14px;
+
   }
+
+  .logo {
+
+    height: 38px;
+
+  }
+
+  .boton-concentrado {
+
+    padding: 10px 15px;
+
+    font-size: .85rem;
+
+  }
+
+}

@@ -1,19 +1,21 @@
-import { PdfContext } from '../../../Context/PdfContext'; 
-import {  useContext } from 'react';
+import { useContext } from 'react';
+import { PdfContext } from '../../../Context/PdfContext';
+import { MdAutoAwesome } from "react-icons/md";
 
+const Resumen = ({ solicitarResumen }) => {
+  const { pdfData } = useContext(PdfContext);  
 
+  return (
+    <div className="flex">
+      <button 
+        onClick={() => solicitarResumen(pdfData)}
+        className="flex items-center gap-2 px-4 py-2.5 hover:bg-amber-500 text-gray-900 font-semibold rounded-xl shadow-md transition-all duration-200 cursor-pointer"
+      >
+        <MdAutoAwesome className="text-xl" />
+        <span>Generar Resumen</span>
+      </button>
+    </div>
+  );
+};
 
-
-
-
-const Resumen=({ solicitarResumen }) => {
- const { pdfData} = useContext(PdfContext);  
- return(  
-<div>
-<button className='p-3 bg-blue-800 border-black text-amber-100 border-2 rounded-2xl' onClick={() => solicitarResumen(pdfData)}>Generar Resumen</button>
-
-</div>
-
- )
-}
 export default Resumen;

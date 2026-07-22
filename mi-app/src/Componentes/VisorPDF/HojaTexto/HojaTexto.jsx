@@ -1,4 +1,4 @@
-import './style.css';
+import "./style.css";
 
 export default function HojaTexto({
   lineasTexto,
@@ -7,10 +7,7 @@ export default function HojaTexto({
   tamanioLetra,
   setTextoGlobalSeleccionado,
   setMenuPosicion,
- 
 }) {
-
- 
 
   const manejarClickSecundario = (e) => {
     const seleccion = window.getSelection();
@@ -19,7 +16,10 @@ export default function HojaTexto({
     if (texto.length > 0) {
       e.preventDefault();
       setTextoGlobalSeleccionado(texto);
-      setMenuPosicion({ x: e.clientX, y: e.clientY });
+      setMenuPosicion({
+        x: e.clientX,
+        y: e.clientY,
+      });
     }
   };
 
@@ -27,9 +27,9 @@ export default function HojaTexto({
     return (
       linea.length < 40 &&
       linea === linea.toUpperCase() &&
-      !linea.endsWith('.') &&
-      !linea.endsWith('?') &&
-      !linea.endsWith('!')
+      !linea.endsWith(".") &&
+      !linea.endsWith("?") &&
+      !linea.endsWith("!")
     );
   };
 
@@ -41,30 +41,25 @@ export default function HojaTexto({
         backgroundColor: colorFondoPDF,
         color: colorTextoPDF,
         fontSize: `${tamanioLetra}px`,
-        cursor: 'text',
-        padding: '24px',
-        borderRadius: '8px',
-        lineHeight: '1.5',
-        textAlign: 'left'
       }}
     >
-      {lineasTexto.map((linea, index) => {
-        if (esTituloReal(linea)) {
-          return (
-            <h3 key={index} style={{ fontSize: `${tamanioLetra * 1.25}px`, marginTop: '1.5rem' }}>
-              {linea}
-            </h3>
-          );
-        }
-
-        return (
-          <span key={index} style={{ display: 'block', marginBottom: '8px' }}>
+      {lineasTexto.map((linea, index) =>
+        esTituloReal(linea) ? (
+          <h3
+            key={index}
+            className="titulo-pdf"
+            style={{
+              fontSize: `${tamanioLetra * 1.35}px`,
+            }}
+          >
             {linea}
-            
-           
-          </span>
-        );
-      })}
+          </h3>
+        ) : (
+          <p key={index} className="parrafo-pdf">
+            {linea}
+          </p>
+        )
+      )}
     </div>
   );
 }

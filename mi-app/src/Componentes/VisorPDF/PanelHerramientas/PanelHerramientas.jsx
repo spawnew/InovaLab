@@ -1,20 +1,21 @@
 import { useState } from "react";
 import Offcanvas from "react-bootstrap/Offcanvas";
-import Tipografia from "./Tipografia";
+import Tipografia from "../Tipografia/Tipografia";
 import {
   MdBuild,
-
   MdPalette,
   MdRecordVoiceOver,
   MdTextFields,
   MdSearch,
   MdSettings,
-  MdChevronRight
+  MdChevronRight,
+  
+  MdFontDownload,
+ 
 } from "react-icons/md";
 
-
-import ColorFondo from "./ColorFondo";
-import HerramientaVoz from "./HerramientaVoz";
+import ColorFondo from "./ColorFondo/ColorFondo";
+import HerramientaVoz from "../HerramientaVoz/HerramientaVoz";
 import TamañoLetra from "./LetraHerramienta/TamañoLetra";
 import Resumen from "./Resumen";
 
@@ -67,14 +68,13 @@ export default function PanelHerramientas({
             <MdChevronRight className="flecha" />
           </button>
 
-          {/* Botón de Resumen conectado con su componente o función */}
+          
           <div className="menu-item-wrapper" style={{ padding: '0 10px' }}>
             <Resumen solicitarResumen={solicitarResumen} />
           </div>
 
           <hr className="separador" />
 
-       
           <p className="categoria">LECTURA</p>
 
           <button
@@ -123,9 +123,23 @@ export default function PanelHerramientas({
             <MdChevronRight className="flecha" />
           </button>
 
+         
+          <button
+            className={`menu-item ${submenuAbierto === "tipografia" ? "activo" : ""}`}
+            onClick={() => setSubmenuAbierto("tipografia")}
+          >
+            <div className="menu-info">
+              <MdFontDownload className="menu-icono" />
+              <div>
+                <h6>Tipografía</h6>
+                <small>Familia tipográfica</small>
+              </div>
+            </div>
+            <MdChevronRight className="flecha" />
+          </button>
+
           <hr className="separador" />
 
-        
           <p className="categoria">MÁS</p>
 
           <button className="menu-item">
@@ -152,13 +166,11 @@ export default function PanelHerramientas({
         </div>
 
         <div className="panel-footer">
-         
           <button className="btn-cerrar-panel" onClick={handleClose}>
             Cerrar Panel
           </button>
         </div>
 
-     
         {submenuAbierto && (
           <div className="submenu">
             <div className="submenu-header">
@@ -173,14 +185,11 @@ export default function PanelHerramientas({
                 {submenuAbierto === "voz" && "Lectura"}
                 {submenuAbierto === "apariencia" && "Apariencia"}
                 {submenuAbierto === "texto" && "Tamaño del texto"}
+                {submenuAbierto === "tipografia" && "Tipografía"}
               </h5>
             </div>
 
             <div className="submenu-body">
-            
-             
-            
-
               {submenuAbierto === "voz" && (
                 <HerramientaVoz
                   alEscuchar={alEscuchar}
@@ -189,17 +198,16 @@ export default function PanelHerramientas({
               )}
 
               {submenuAbierto === "apariencia" && (
-                <>
-                  <ColorFondo
-                    aplicarTemaPDF={aplicarTemaPDF}
-                    aplicarTemaFondo={aplicarTemaFondo}
-                  />
-                  <Tipografia
-                  cambiarLetra={cambiarLetra}/>
+                <ColorFondo
+                  aplicarTemaPDF={aplicarTemaPDF}
+                  aplicarTemaFondo={aplicarTemaFondo}
+                />
+              )}
 
-                  
-                 
-                </>
+              {submenuAbierto === "tipografia" && (
+                <Tipografia
+                  cambiarLetra={cambiarLetra}
+                />
               )}
 
               {submenuAbierto === "texto" && (

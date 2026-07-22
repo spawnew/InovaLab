@@ -1,32 +1,45 @@
-import './Navbar.css'
-import Concentrado from './Concentrado/Concentrado'
+import { useContext, useState } from 'react';
 import { PdfContext } from '../../Context/PdfContext';
-import { useContext, useState,useContextRef } from 'react';
-import User from './User/User'
+import Concentrado from './Concentrado/Concentrado';
+import User from './User/User';
+import './Navbar.css';
 
 const Navbar = () => {
   const [showModal, setShowModal] = useState(false);
-  const { pdfData, userData } = useContextRef || useContext(PdfContext); 
+  const { pdfData, userData } = useContext(PdfContext); 
   
-  // Evitamos que falle si userData todavía es null al iniciar
-  console.log(userData?.email);
-
   return (
-    <nav className="nav-links">
-      <div>
-<img src="../../../public/Captura.JPG" alt="logo" />
-      </div>
-      
-      
-      <div>
-        <button className='boton-concentrado' onClick={() => setShowModal(true)}>Modo Concentrado</button>
-        <Concentrado isOpen={showModal} onClose={() => setShowModal(false)} pdfData={pdfData} />
-      </div>
+   <nav className="nav-links">
 
-   
-      {userData && <User userData={userData} />}
-    </nav>
-  )
-}
+    <div className="logo-container">
+        <img
+            src="../../../public/Nexa-Logo.png"
+            className="logo"
+            alt="Logo Nexa"
+        />
+    </div>
+
+    <div className="nav-actions">
+
+        <button
+            className="boton-concentrado"
+            onClick={() => setShowModal(true)}
+        >
+            🎯 Modo Concentrado
+        </button>
+
+        <Concentrado
+            isOpen={showModal}
+            onClose={() => setShowModal(false)}
+            pdfData={pdfData}
+        />
+
+        {userData && <User userData={userData}/>}
+
+    </div>
+
+</nav>
+  );
+};
 
 export default Navbar;

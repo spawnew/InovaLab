@@ -99,3 +99,62 @@
 .menu{
         display:flex;
     }
+        /* ===========================
+       BOTÓN DETENER LECTURA
+    =========================== */
+    
+        .btn-detener-lectura {
+    
+            display: flex;
+    
+            align-items: center;
+    
+            justify-content: center;
+    
+            gap: 10px;
+    
+            margin: 18px auto;
+    
+            padding: 14px 24px;
+    
+            border: none;
+    
+            border-radius: 14px;
+    
+            background: linear-gradient(135deg, #ef4444, #dc2626);
+    
+            color: white;
+    
+            font-size: .95rem;
+    
+            font-weight: 600;
+    
+            cursor: pointer;
+    
+            box-shadow: 0 8px 20px rgba(239, 68, 68, .30);
+    
+            transition: all .25s ease;
+    
+        }
+    
+        .btn-detener-lectura:hover {
+    
+            background: linear-gradient(135deg, #dc2626, #b91c1c);
+    
+            transform: translateY(-2px);
+    
+            box-shadow: 0 12px 24px rgba(239, 68, 68, .45);
+    
+        }
+    
+        .btn-detener-lectura:active {
+    
+            transform: scale(.97);
+    
+        }
+    
+        .btn-detener-lectura svg {
+    
+            font-size: 24px;
+    
+        }
