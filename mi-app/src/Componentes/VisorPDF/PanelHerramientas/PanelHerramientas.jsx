@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useContext } from "react";
 import Offcanvas from "react-bootstrap/Offcanvas";
 import Tipografia from "../Tipografia/Tipografia";
+import { PdfContext } from "../../../Context/PdfContext"; 
 import {
   MdBuild,
   MdPalette,
@@ -9,17 +10,14 @@ import {
   MdSearch,
   MdSettings,
   MdChevronRight,
-  
   MdFontDownload,
- 
 } from "react-icons/md";
 
 import ColorFondo from "./ColorFondo/ColorFondo";
 import HerramientaVoz from "../HerramientaVoz/HerramientaVoz";
 import TamañoLetra from "./LetraHerramienta/TamañoLetra";
-import Resumen from "./Resumen";
+import Resumen from "../Resumir/Resumen";
 import Buscar from "./Buscar/Buscar";
-
 import "./style.css";
 
 export default function PanelHerramientas({
@@ -35,9 +33,13 @@ export default function PanelHerramientas({
   solicitarResumen,
   cambiarLetra,
   borrarFiltros,
-  manejarBusqueda
+  manejarBusqueda,
+  enviarDato
 }) {
   const [submenuAbierto, setSubmenuAbierto] = useState(null);
+  
+  // Consumimos la función del contexto global
+  const { enviarDatoFlashCars } = useContext(PdfContext);
 
   return (
     <Offcanvas
@@ -64,18 +66,13 @@ export default function PanelHerramientas({
             <div className="menu-info">
               <MdBuild className="menu-icono" />
               <div>
-                <h6>Herramientas</h6>
-                <small>Configurar lectura</small>
+                <h6>Herramientas IA</h6>
+                <small> </small>
               </div>
             </div>
             <MdChevronRight className="flecha" />
           </button>
-
           
-          <div className="menu-item-wrapper" style={{ padding: '0 10px' }}>
-            <Resumen solicitarResumen={solicitarResumen} />
-          </div>
-
           <hr className="separador" />
 
           <p className="categoria">LECTURA</p>
@@ -125,7 +122,6 @@ export default function PanelHerramientas({
             </div>
             <MdChevronRight className="flecha" />
           </button>
-
          
           <button
             className={`menu-item ${submenuAbierto === "tipografia" ? "activo" : ""}`}
@@ -146,35 +142,33 @@ export default function PanelHerramientas({
           <p className="categoria">MÁS</p>
 
           <button
-  className={`menu-item ${submenuAbierto === "buscar" ? "activo" : ""}`}
-  onClick={() => setSubmenuAbierto("buscar")}
->
-  <div className="menu-info">
-    <MdSearch className="menu-icono" />
-    <div>
-      <h6>Buscar</h6>
-      <small>Buscar texto</small>
-    </div>
-  </div>
-  <MdChevronRight className="flecha" />
-</button>
+            className={`menu-item ${submenuAbierto === "buscar" ? "activo" : ""}`}
+            onClick={() => setSubmenuAbierto("buscar")}
+          >
+            <div className="menu-info">
+              <MdSearch className="menu-icono" />
+              <div>
+                <h6>Buscar</h6>
+                <small>Buscar texto</small>
+              </div>
+            </div>
+            <MdChevronRight className="flecha" />
+          </button>
 
           <button 
-  className="menu-item"
-  onClick={() => {
-   
-      borrarFiltros();
-    
-  }}
->
-  <div className="menu-info">
-    <MdSettings className="menu-icono" />
-    <div>
-      <h6>Borrar Preferencias</h6>
-      <small>Reinicia las preferencias</small>
-    </div>
-  </div>
-</button>
+            className="menu-item"
+            onClick={() => {
+                borrarFiltros();
+            }}
+          >
+            <div className="menu-info">
+              <MdSettings className="menu-icono" />
+              <div>
+                <h6>Borrar Preferencias</h6>
+                <small>Reinicia las preferencias</small>
+              </div>
+            </div>
+          </button>
         </div>
 
         <div className="panel-footer">
@@ -193,14 +187,14 @@ export default function PanelHerramientas({
                 ←
               </button>
               <h5>
-    {submenuAbierto === "herramientas" && "Herramientas"}
-    {submenuAbierto === "voz" && "Lectura"}
-    {submenuAbierto === "apariencia" && "Apariencia"}
-    {submenuAbierto === "texto" && "Tamaño del texto"}
-    {submenuAbierto === "tipografia" && "Tipografía"}
-    {submenuAbierto === "borrarPreferencias" && "Borrar Preferencias"} {/* <-- Corregido */}
-    {submenuAbierto === "buscar" && "Buscar"}
-  </h5>
+                {submenuAbierto === "herramientas" && "Herramientas"}
+                {submenuAbierto === "voz" && "Lectura"}
+                {submenuAbierto === "apariencia" && "Apariencia"}
+                {submenuAbierto === "texto" && "Tamaño del texto"}
+                {submenuAbierto === "tipografia" && "Tipografía"}
+                {submenuAbierto === "borrarPreferencias" && "Borrar Preferencias"}
+                {submenuAbierto === "buscar" && "Buscar"}
+              </h5>
             </div>
 
             <div className="submenu-body">
@@ -224,6 +218,74 @@ export default function PanelHerramientas({
                 />
               )}
 
+              {submenuAbierto === "herramientas" && (
+                <>
+                  <Resumen solicitarResumen={solicitarResumen} />
+                  
+                  <hr style={{ margin: '20px 0' }} />
+                  
+   <div className="ia-card">
+
+    <h6 className="ia-title">
+        🤖 Herramientas Inteligentes
+    </h6>
+
+    <p className="ia-description">
+        Genere material de estudio automáticamente a partir del documento.
+    </p>
+
+   <button
+        type="button"
+        className="btn-ia btn-flashcards"
+        onClick={async (e) => {
+            e.preventDefault();
+            await enviarDatoFlashCars();
+            handleClose();
+
+            // 🔹 Aumentamos a 300ms para que el Offcanvas termine de cerrarse del todo
+            setTimeout(() => {
+                requestAnimationFrame(() => {
+                    const seccion = document.getElementById("contenedor-herramientas");
+                    if (seccion) {
+                        const yOffset = -20;
+                        const y = seccion.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                        window.scrollTo({ top: y, behavior: 'smooth' });
+                    }
+                });
+            }, 300);
+        }}
+    >
+        ✨ Generar Flashcards
+    </button>
+        
+    <button 
+        type="button"
+        className="btn-ia btn-cuestionario"
+        onClick={async (e) => {
+            e.preventDefault();
+            await enviarDato(e);
+            handleClose();
+
+            // 🔹 Mismo cambio acá (300ms)
+            setTimeout(() => {
+                requestAnimationFrame(() => {
+                    const seccion = document.getElementById("contenedor-herramientas");
+                    if (seccion) {
+                        const yOffset = -20;
+                        const y = seccion.getBoundingClientRect().top + window.pageYOffset + yOffset;
+                        window.scrollTo({ top: y, behavior: 'smooth' });
+                    }
+                });
+            }, 300);
+        }}
+    >
+        📝 Generar Cuestionario
+    </button>
+
+</div>
+                </>
+              )}
+
               {submenuAbierto === "texto" && (
                 <TamañoLetra
                   tamaño={tamanioLetra}
@@ -232,10 +294,10 @@ export default function PanelHerramientas({
                   aplicarTemaPDF={aplicarTemaPDF}
                 />
               )}
-              {submenuAbierto === "buscar" && (
-  <Buscar manejarBusqueda={manejarBusqueda} />
-)}
               
+              {submenuAbierto === "buscar" && (
+                <Buscar manejarBusqueda={manejarBusqueda} />
+              )}
             </div>
           </div>
         )}

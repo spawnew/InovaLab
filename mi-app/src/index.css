@@ -14,7 +14,10 @@
   font-family: 'OpenDyslexic', sans-serif !important;
 }
 
-
+body.modal-open {
+  overflow: auto !important;
+  padding-right: 0 !important;
+}
 
 :root {
   --text: #6b6375;

@@ -6,9 +6,10 @@ import { ColorContext } from '../../Context/fondoContext.jsx';
 import { PdfContext } from '../../Context/PdfContext.jsx';
 import { MdStopCircle } from "react-icons/md";
 import './styleMenu.css';
-
+import FlashCard from '../FlashCard/FlashCard.jsx';
+import Cuestionario from '../Cuestionario/Cuestionario.jsx'
 export default function VisorAccesibleLTI() {
-  const { pdfData, cargando, error, userData } = useContext(PdfContext);
+  const { pdfData, cargando, error, userData,enviarDato } = useContext(PdfContext);
   const { colorFondo, colorTexto } = useContext(ColorContext);
   const [palabraBuscada, setPalabraBuscada] = useState('');
 
@@ -21,7 +22,7 @@ export default function VisorAccesibleLTI() {
   const [menuAbierto, setMenuAbierto] = useState(true);
   const [menuPosicion, setMenuPosicion] = useState(null);
   const [reproduciendoSeleccion, setReproduciendoSeleccion] = useState(false);
-  const [showModal, setShowModal] = useState(false);
+ 
   const [ tipoLetra, setTipoLetra ] = useState('Nunito');
   
   const [showExplicacionModal, setShowExplicacionModal] = useState(false);
@@ -125,7 +126,8 @@ export default function VisorAccesibleLTI() {
     setTipoLetra('sans-serif');
     setTamanioLetra(16);
     setPalabraBuscada(''); 
-  }
+ }
+ 
 
   const manejarBusqueda = (datosFormulario) => {
   setPalabraBuscada(datosFormulario); 
@@ -204,30 +206,36 @@ export default function VisorAccesibleLTI() {
             cambiarLetra={cambiarLetra}
             borrarFiltros={borrarFiltros}
             manejarBusqueda={manejarBusqueda}
+            enviarDato={enviarDato}
+           
           />
 
-          <HojaTexto
-   colorFondoPDF={colorFondoPDF2}
-   colorTextoPDF={colorTextoPDF2}
-   lineasTexto={pdfData.split('\n')}
-   colorFondo={colorFondo}
-   colorTexto={colorTexto}
-   tamanioLetra={tamanioLetra}
-   setTextoGlobalSeleccionado={setTextoGlobalSeleccionado}
-   setMenuPosicion={setMenuPosicion}
-   palabraBuscada={palabraBuscada} 
+   
+<HojaTexto
+    colorFondoPDF={colorFondoPDF2}
+    colorTextoPDF={colorTextoPDF2}
+    lineasTexto={pdfData.split('\n')}
+    colorFondo={colorFondo}
+    colorTexto={colorTexto}
+    tamanioLetra={tamanioLetra}
+    setTextoGlobalSeleccionado={setTextoGlobalSeleccionado}
+    setMenuPosicion={setMenuPosicion}
+    palabraBuscada={palabraBuscada} 
 />
-
+<div id="contenedor-herramientas" style={{ marginTop: '40px' }}>
+    <FlashCard />
+    <Cuestionario />
+</div>
        
           {showExplicacionModal && (
-            <div className="modal-overlay" onClick={() => setShowExplicacionModal(false)}>
-              <div className="modal-content" onClick={e => e.stopPropagation()}>
-                <h3>{tipoModal === 'resumen' ? 'Resumen del documento' : 'Explicación del fragmento'}</h3>
-                <p style={{ whiteSpace: 'pre-wrap' }}>{explicacionTexto}</p>
-                <button onClick={() => setShowExplicacionModal(false)}>Cerrar</button>
-              </div>
-            </div>
-          )}
+    <div className="modal-overlay" onClick={() => setShowExplicacionModal(false)}>
+        <div className="modal-content" onClick={e => e.stopPropagation()}>
+            <h3>{tipoModal === 'resumen' ? 'Resumen del documento' : 'Explicación del fragmento'}</h3>
+            <p style={{ whiteSpace: 'pre-wrap' }}>{explicacionTexto}</p>
+            <button onClick={() => setShowExplicacionModal(false)}>Cerrar</button>
+        </div>
+    </div>
+)}
         </>
       ) : (
         <div className="pdf-status">No hay documento para mostrar.</div>

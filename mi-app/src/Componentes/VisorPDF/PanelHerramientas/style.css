@@ -350,3 +350,116 @@ input[type="color"] {
     }
 
 }
+.ia-card {
+
+    background: #f8fafc;
+
+    border: 1px solid #e5e7eb;
+
+    border-radius: 18px;
+
+    padding: 22px;
+
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .08);
+
+}
+
+.ia-title {
+
+    font-size: 1.2rem;
+
+    font-weight: 700;
+
+    color: #1f2937;
+
+    margin-bottom: 8px;
+
+}
+
+.ia-description {
+
+    color: #64748b;
+
+    font-size: .9rem;
+
+    margin-bottom: 22px;
+
+    line-height: 1.5;
+
+}
+
+.btn-ia {
+
+    width: 100%;
+
+    border: none;
+
+    border-radius: 14px;
+
+    padding: 14px;
+
+    margin-top: 14px;
+
+    cursor: pointer;
+
+    font-weight: 700;
+
+    font-size: 16px;
+
+    transition: .25s;
+
+    display: flex;
+
+    justify-content: center;
+
+    align-items: center;
+
+    gap: 10px;
+
+}
+
+/* Flashcards */
+
+.btn-flashcards {
+
+    background: linear-gradient(135deg, #4f46e5, #4338ca);
+
+    color: white;
+
+    box-shadow: 0 8px 18px rgba(79, 70, 229, .30);
+
+}
+
+.btn-flashcards:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow: 0 14px 28px rgba(79, 70, 229, .45);
+
+}
+
+/* Cuestionario */
+
+.btn-cuestionario {
+
+    background: linear-gradient(135deg, #0ea5e9, #0284c7);
+
+    color: white;
+
+    box-shadow: 0 8px 18px rgba(14, 165, 233, .30);
+
+}
+
+.btn-cuestionario:hover {
+
+    transform: translateY(-3px);
+
+    box-shadow: 0 14px 28px rgba(14, 165, 233, .45);
+
+}
+
+.btn-ia:active {
+
+    transform: scale(.98);
+
+}
